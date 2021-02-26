@@ -10,4 +10,6 @@
     <color name="primary_red">#EB2F64</color>
     <color name="primary_black">#323538</color>
     <color name="primary_white">#F7F7F7</color>
+    <color name="input_grey">#E3E3E3</color>
+    <color name="hint_grey">#808080</color>
 </resources>

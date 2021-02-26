@@ -5,21 +5,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
-    public void onLogin(View view){
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+public class LoginActivity extends AppCompatActivity {
+    public void onBack(View view){
+        finish();
+    }
+    public void onLoginSubmit(View view){
+        finish();
+        Intent intent = new Intent(LoginActivity.this, SignoutActivity.class);
         startActivity(intent);
     }
     public void onRegister(View view){
-        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+        finish();
+        Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
     }
 }
