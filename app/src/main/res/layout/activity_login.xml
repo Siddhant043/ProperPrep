@@ -45,7 +45,7 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/emailText"
+        android:id="@+id/emailTextLogin"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="99dp"
@@ -59,13 +59,13 @@
         android:inputType="textPersonName"
         android:textColor="@color/primary_black"
         android:textColorHint="@color/hint_grey"
-        app:layout_constraintBottom_toTopOf="@+id/passwordText"
+        app:layout_constraintBottom_toTopOf="@+id/passwordTextLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/passwordText"
+        android:id="@+id/passwordTextLogin"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginStart="99dp"
@@ -98,7 +98,7 @@
         android:text="Welcome Back!"
         android:textColor="@color/primary_black"
         android:textSize="50sp"
-        app:layout_constraintBottom_toTopOf="@+id/emailText"
+        app:layout_constraintBottom_toTopOf="@+id/emailTextLogin"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -113,7 +113,6 @@
         android:layout_marginEnd="212dp"
         android:layout_marginRight="212dp"
         android:fontFamily="@font/regular"
-        android:onClick="onLoginSubmit"
         android:text="Login"
         android:textAllCaps="false"
         android:textColor="@color/primary_white"
@@ -122,7 +121,7 @@
         app:cornerRadius="10sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordTextLogin" />
 
     <TextView
         android:id="@+id/needHelpTextView"
@@ -141,7 +140,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/submitLoginButton"
-        app:layout_constraintTop_toBottomOf="@+id/passwordText" />
+        app:layout_constraintTop_toBottomOf="@+id/passwordTextLogin" />
 
     <ImageView
         android:id="@+id/backButton"

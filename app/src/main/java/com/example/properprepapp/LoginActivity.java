@@ -1,18 +1,27 @@
 package com.example.properprepapp;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+
 public class LoginActivity extends AppCompatActivity {
     private EditText emailText, passwordText;
     private Button submitLoginButton;
-    private DatabaseHelper myDB; //declaring instance
+    private FirebaseAuth mAuth; // declared firebase instance
 
     public void onBack(View view){
         finish();
@@ -30,25 +39,40 @@ public class LoginActivity extends AppCompatActivity {
         emailText = findViewById(R.id.emailTextLogin);
         passwordText = findViewById(R.id.passwordTextLogin);
         submitLoginButton = findViewById(R.id.submitLoginButton);
-        myDB = new DatabaseHelper(this); //initializing instance
-        checkUser();
-    }
-
-    //function to check the user in database
-    private void checkUser(){
+        mAuth = FirebaseAuth.getInstance(); // initialized firebase instance
         submitLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean var = myDB.checkUser(emailText.getText().toString(), passwordText.getText().toString());
-                if(var){
-                    Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
-                    finish();
-                    Intent intent = new Intent(LoginActivity.this, SignoutActivity.class);
-                    startActivity(intent);
-                }else{
-                    Toast.makeText(LoginActivity.this, "Incorrect email/password.", Toast.LENGTH_SHORT).show();
-                }
+                checkUser();
             }
         });
+    }
+    //function to check the user login
+    private void checkUser(){
+        String email = emailText.getText().toString();
+        String password = passwordText.getText().toString();
+        if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+            if(!password.isEmpty()){
+                mAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
+                    @Override
+                    public void onSuccess(AuthResult authResult) {
+                        Toast.makeText(LoginActivity.this, "Login Successful!", Toast.LENGTH_SHORT).show();
+                        finish();
+                        startActivity(new Intent(LoginActivity.this, SignoutActivity.class));
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Toast.makeText(LoginActivity.this, "Login Failed!", Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }else{
+                passwordText.setError("Empty fields are not allowed.");
+            }
+        }else if(email.isEmpty()){
+            emailText.setError("Empty fields are not allowed.");
+        }else {
+            emailText.setError("Please enter correct email.");
+        }
     }
 }
