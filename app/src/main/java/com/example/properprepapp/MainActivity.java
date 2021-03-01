@@ -1,25 +1,30 @@
 package com.example.properprepapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Toast;
+
+
+import com.example.properprepapp.databinding.ActivityMainBinding;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    public void onLogin(View view){
-        Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-        startActivity(intent);
-    }
-    public void onRegister(View view){
-        Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
-        startActivity(intent);
-    }
+    ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        ArrayList<CategoryModel> categories = new ArrayList<>();
+        categories.add(new CategoryModel("", "Mathematics", " ", " "," "));
+        CategoryAdapter adapter = new CategoryAdapter(this, categories);
+        binding.pacticeCategoryList.setLayoutManager(new GridLayoutManager(this, 1));
+        binding.pacticeCategoryList.setAdapter(adapter);
     }
 }
