@@ -21,10 +21,6 @@ public class LoginActivity extends AppCompatActivity {
     private Button submitLoginButton;
     private FirebaseAuth mAuth; // declared firebase instance
 
-    public void onBack(View view){
-        finish();
-    }
-
     public void onRegister(View view){
         finish();
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);

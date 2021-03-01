@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_white"
     tools:context=".RegisterActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/primary_white"
-        >
+  ]
 
         <Button
             android:id="@+id/submitSignupButton"
@@ -94,29 +91,13 @@
             app:layout_constraintHorizontal_bias="0.494"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/backButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="379dp"
-            android:layout_marginRight="379dp"
-            android:onClick="onBack"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/back_arrow" />
-
         <TextView
             android:id="@+id/textView2"
             android:layout_width="0dp"
             android:layout_height="130dp"
             android:layout_marginStart="30dp"
             android:layout_marginLeft="30dp"
-            android:layout_marginTop="113dp"
+            android:layout_marginTop="90dp"
             android:layout_marginEnd="115dp"
             android:layout_marginRight="115dp"
             android:layout_marginBottom="36dp"
@@ -129,26 +110,23 @@
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.1" />
-
-        <TextView
-            android:id="@+id/registerButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="696dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/bold"
-            android:onClick="onLogin"
-            android:text="Login."
-            android:textColor="@color/primary_red"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.424"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
-        <TextView
+    <TextView
+        android:id="@+id/registerButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="1dp"
+        android:layout_marginLeft="1dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/bold"
+        android:onClick="onLogin"
+        android:text="Login."
+        android:textColor="@color/primary_red"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textView" />
+
+    <TextView
             android:id="@+id/needHelpTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -168,26 +146,19 @@
             app:layout_constraintStart_toEndOf="@+id/submitLoginButton"
             app:layout_constraintTop_toBottomOf="@+id/confirmPasswordTextSignup" />
 
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="696dp"
-            android:layout_marginEnd="336dp"
-            android:layout_marginRight="336dp"
-            android:layout_marginBottom="8dp"
-            android:fontFamily="@font/light"
-            android:text="Already a member?"
-            android:textColor="@color/primary_black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="30dp"
+        android:fontFamily="@font/light"
+        android:text="Already a member?"
+        android:textColor="@color/primary_black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>
+
