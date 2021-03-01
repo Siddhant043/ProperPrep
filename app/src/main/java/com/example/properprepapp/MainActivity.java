@@ -22,7 +22,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         ArrayList<CategoryModel> categories = new ArrayList<>();
-        categories.add(new CategoryModel("", "Mathematics", " ", " "," "));
+        categories.add(new CategoryModel("", "Mathematics", " "));
+        categories.add(new CategoryModel("", "Physics", " "));
+        categories.add(new CategoryModel("", "Chemistry", " "));
         CategoryAdapter adapter = new CategoryAdapter(this, categories);
         binding.pacticeCategoryList.setLayoutManager(new GridLayoutManager(this, 1));
         binding.pacticeCategoryList.setAdapter(adapter);
