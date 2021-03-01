@@ -2,7 +2,7 @@ package com.example.properprepapp;
 
 public class CategoryModel {
     private String categoryId, categoryName,categoryImage;
-
+    // categorymodel is called to get/set category item values
     public CategoryModel(String categoryId, String categoryName, String categoryImage) {
         this.categoryId = categoryId;
         this.categoryImage = categoryImage;

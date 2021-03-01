@@ -22,7 +22,6 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseAuth mAuth; // declared firebase instance
 
     public void onRegister(View view){
-        finish();
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
         startActivity(intent);
     }
