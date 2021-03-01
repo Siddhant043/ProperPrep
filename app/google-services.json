@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "549404057226",
+    "project_id": "properprepapp",
+    "storage_bucket": "properprepapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:549404057226:android:3aeb2696cc04547a901773",
+        "android_client_info": {
+          "package_name": "com.example.properprepapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "549404057226-rcqtggqolf0ehmhb26on2f0cd2u3kieq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDyGm77R4S7eokTvYCaHFkjghFGRkFeyy4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "549404057226-rcqtggqolf0ehmhb26on2f0cd2u3kieq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
