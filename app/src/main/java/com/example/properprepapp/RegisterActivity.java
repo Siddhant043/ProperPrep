@@ -22,9 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     private Button submitSignupButton;
     private FirebaseAuth mAuth; //declared firebase instance
 
-    public void onLogin(View view){
-        Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-        startActivity(intent);
+    public void onLogin(View view) {
         finish();
     }
 
@@ -46,13 +44,14 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
     }
+
     // function to create a user
-    private void createUser(){
+    private void createUser() {
         String email = emailText.getText().toString();
         String password = passwordText.getText().toString();
         String confirmPassword = confirmPasswordText.getText().toString();
-        if(!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.equals(confirmPassword)){
-            if(!password.isEmpty()){
+        if (!email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches() && password.equals(confirmPassword)) {
+            if (!password.isEmpty()) {
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
@@ -67,14 +66,14 @@ public class RegisterActivity extends AppCompatActivity {
                         Toast.makeText(RegisterActivity.this, "Registration failed.", Toast.LENGTH_SHORT).show();
                     }
                 });
-            }else{
+            } else {
                 passwordText.setError("Empty fields are not allowed.");
             }
-        }else if(email.isEmpty()){
+        } else if (email.isEmpty()) {
             emailText.setError("Empty fields are not allowed.");
-        }else if(!password.equals(confirmPassword)){
+        } else if (!password.equals(confirmPassword)) {
             confirmPasswordText.setError("Password does not match Confirm password");
-        }else {
+        } else {
             emailText.setError("Please enter correct email.");
         }
     }
