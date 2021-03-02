@@ -30,8 +30,8 @@
 
             <ImageView
                 android:id="@+id/categoryItemImage"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
                 android:layout_marginTop="10dp"
                 android:contentDescription="TODO"
                 app:srcCompat="@drawable/physics_icon" />
@@ -40,7 +40,12 @@
                 android:id="@+id/categoryItemHeading"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="30dp"
+                android:layout_marginEnd="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginBottom="0dp"
                 android:fontFamily="@font/semibold"
                 android:gravity="center"
                 android:text="Physics"
@@ -51,10 +56,11 @@
                 android:id="@+id/categoryItemPracticeButton"
                 android:layout_width="140dp"
                 android:layout_height="50dp"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginBottom="30dp"
                 android:text="Practice"
                 android:textAllCaps="false"
+                android:textColor="@color/primary_white"
                 app:backgroundTint="@color/buttonColor_blue"
                 app:cornerRadius="10sp" />
         </LinearLayout>

@@ -1,14 +1,19 @@
 package com.example.properprepapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -33,6 +38,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         CategoryModel model = categoryModels.get(position);
         holder.categoryItemHeading.setText(model.getCategoryName());
 
+        //using glide to handle image intput
+        Glide.with(context)
+                .load(model.getCategoryImage())
+                .into(holder.categoryItemImage);
 
     }
 
@@ -44,11 +53,23 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
         ImageView categoryItemImage;
         TextView categoryItemHeading;
+        Button categoryItemPracticeButton;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
             categoryItemImage = itemView.findViewById(R.id.categoryItemImage);
             categoryItemHeading = itemView.findViewById(R.id.categoryItemHeading);
+            categoryItemPracticeButton = itemView.findViewById(R.id.categoryItemPracticeButton);
+            
+            categoryItemPracticeButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    String heading = categoryItemHeading.getText().toString();
+                    Intent intent = new Intent(v.getContext(), ItemTopicsActivity.class);
+                    intent.putExtra("heading", heading); // passing the value of categoryItemHeading to the next activity
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }

@@ -60,14 +60,14 @@
         app:layout_constraintVertical_bias="0.916" />
 
     <TextView
-        android:id="@+id/analyseProblemsText"
+        android:id="@+id/analyseProgressText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginRight="32dp"
         android:alpha="0.7"
         android:fontFamily="@font/semibold"
-        android:text="Analyse Problems"
+        android:text="Analyse Progress"
         android:textColor="@color/primary_white"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="@+id/headerView"

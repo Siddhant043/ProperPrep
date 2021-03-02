@@ -22,11 +22,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         ArrayList<CategoryModel> categories = new ArrayList<>();
-        categories.add(new CategoryModel("", "Mathematics", " "));
-        categories.add(new CategoryModel("", "Physics", " "));
-        categories.add(new CategoryModel("", "Chemistry", " "));
+        categories.add(new CategoryModel("", "Physics", "https://img.icons8.com/dusk/452/physics.png"));
+        categories.add(new CategoryModel("", "Chemistry", "https://img.icons8.com/cotton/2x/test-tube.png"));
+        categories.add(new CategoryModel("", "Mathematics", "https://img.icons8.com/cotton/2x/trigonometry--v2.png"));
+        categories.add(new CategoryModel("", "Biology","https://img.icons8.com/cotton/2x/microscope--v2.png"));
         CategoryAdapter adapter = new CategoryAdapter(this, categories);
         binding.pacticeCategoryList.setLayoutManager(new GridLayoutManager(this, 1));
         binding.pacticeCategoryList.setAdapter(adapter);
+
+
+
     }
 }
