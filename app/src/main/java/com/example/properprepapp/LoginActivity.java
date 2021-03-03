@@ -17,12 +17,14 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 public class LoginActivity extends AppCompatActivity {
 
     ActivityLoginBinding binding;
     ProgressDialog progressDialog;
     private FirebaseAuth mAuth; // declared firebase instance
+
 
     public void onRegister(View view){
         Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
@@ -37,6 +39,12 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance(); // initialized firebase instance
         progressDialog = new ProgressDialog(this);
         progressDialog.setMessage("Logging in...");
+
+        if(mAuth.getCurrentUser() != null){
+            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+            finish();
+        }
+
 
         binding.submitLoginButton.setOnClickListener(new View.OnClickListener() {
             @Override

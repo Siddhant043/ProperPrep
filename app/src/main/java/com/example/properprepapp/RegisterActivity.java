@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            String uid = task.getResult().getUser().getUid();
+                            String uid = task.getResult().getUser().getUid(); //getting uid from authentication.
                             db
                                     .collection("users")
                                     .document(uid)

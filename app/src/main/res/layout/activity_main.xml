@@ -7,83 +7,16 @@
     android:background="@color/primary_white"
     tools:context=".MainActivity">
 
-    <View
-        android:id="@+id/headerView"
+    <FrameLayout
+        android:id="@+id/content"
         android:layout_width="0dp"
-        android:layout_height="115dp"
-        android:background="@drawable/header"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="47dp"
-        android:layout_height="44dp"
-        app:layout_constraintBottom_toBottomOf="@+id/headerView"
-        app:layout_constraintEnd_toEndOf="@+id/headerView"
-        app:layout_constraintHorizontal_bias="0.324"
-        app:layout_constraintStart_toStartOf="@+id/headerView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.225"
-        app:srcCompat="@drawable/ic_properprep_logo" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="140dp"
-        android:layout_height="35dp"
-        android:fontFamily="@font/semibold"
-        android:text="ProperPrep"
-        android:textColor="@color/primary_white"
-        android:textSize="25sp"
-        app:layout_constraintBottom_toBottomOf="@+id/headerView"
-        app:layout_constraintEnd_toEndOf="@+id/headerView"
-        app:layout_constraintHorizontal_bias="0.670"
-        app:layout_constraintStart_toStartOf="@+id/headerView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.300" />
-
-    <TextView
-        android:id="@+id/practiceProblemsText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="33dp"
-        android:layout_marginLeft="33dp"
-        android:fontFamily="@font/semibold"
-        android:text="Practice Problems"
-        android:textColor="@color/primary_white"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/headerView"
-        app:layout_constraintStart_toStartOf="@+id/headerView"
-        app:layout_constraintTop_toTopOf="@+id/headerView"
-        app:layout_constraintVertical_bias="0.916" />
-
-    <TextView
-        android:id="@+id/analyseProgressText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="32dp"
-        android:layout_marginRight="32dp"
-        android:alpha="0.7"
-        android:fontFamily="@font/semibold"
-        android:text="Analyse Progress"
-        android:textColor="@color/primary_white"
-        android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="@+id/headerView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/headerView"
-        app:layout_constraintVertical_bias="0.916" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/pacticeCategoryList"
-        android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/bottomBar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerView" />
+        app:layout_constraintTop_toTopOf="parent">
+
+    </FrameLayout>
 
     <me.ibrahimsn.lib.SmoothBottomBar
         android:id="@+id/bottomBar"

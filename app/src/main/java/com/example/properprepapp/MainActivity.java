@@ -1,19 +1,32 @@
 package com.example.properprepapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 
 import com.example.properprepapp.databinding.ActivityMainBinding;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
+import me.ibrahimsn.lib.OnItemSelectedListener;
+
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +34,39 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        ArrayList<CategoryModel> categories = new ArrayList<>();
-        categories.add(new CategoryModel("", "Physics", "https://img.icons8.com/dusk/452/physics.png"));
-        categories.add(new CategoryModel("", "Chemistry", "https://img.icons8.com/cotton/2x/test-tube.png"));
-        categories.add(new CategoryModel("", "Mathematics", "https://img.icons8.com/cotton/2x/trigonometry--v2.png"));
-        categories.add(new CategoryModel("", "Biology","https://img.icons8.com/cotton/2x/microscope--v2.png"));
-        CategoryAdapter adapter = new CategoryAdapter(this, categories);
-        binding.pacticeCategoryList.setLayoutManager(new GridLayoutManager(this, 1));
-        binding.pacticeCategoryList.setAdapter(adapter);
+//        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction(); // making transaction object to switch between fragments
+//
+//        transaction.replace(R.id.content, new PracticeFragment());
 
+        openFragment(new PracticeFragment());
 
+        //giving bottom menu functionality
+        binding.bottomBar.setOnItemSelectedListener(new OnItemSelectedListener() {
+            @Override
+            public boolean onItemSelect(int i) {
+                switch (i){
+                    case 0:
+                        openFragment(new PracticeFragment());
 
+                        break;
+                    case 1:
+                        openFragment(new TestFragment());
+
+                        break;
+                    case 2:
+                        openFragment(new ProfileFragment());
+                        break;
+                }
+                return false;
+            }
+        });
+    }
+
+    private void openFragment(final Fragment fragment)   {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+        transaction.replace(R.id.content, fragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
 }
