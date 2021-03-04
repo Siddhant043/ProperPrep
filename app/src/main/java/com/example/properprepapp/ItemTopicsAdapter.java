@@ -1,6 +1,7 @@
 package com.example.properprepapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -32,6 +33,13 @@ public class ItemTopicsAdapter extends RecyclerView.Adapter<ItemTopicsAdapter.It
         ItemTopicsModel model = itemTopicsModels.get(position);
         holder.itemTopicView.setText(model.getItemTopicView());
         holder.questionSolvedView.setText(model.getQuestionSolvedView());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, QuizActivity.class);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override

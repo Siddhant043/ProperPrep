@@ -37,6 +37,7 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mAuth.signOut();
+
             }
         });
 

@@ -29,24 +29,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/fourthOptionView" />
 
-        <ImageView
-            android:id="@+id/backArrow"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="30dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/back_arrow" />
-
         <TextView
-            android:id="@+id/questionSolvedFromTotal"
+            android:id="@+id/questionNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="35dp"
             android:fontFamily="@font/light"
-            android:text="15/30"
+            android:text="1/30"
             android:textColor="@color/primary_black"
             android:textSize="15dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -58,10 +47,11 @@
             android:id="@+id/nextQuestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="90dp"
-            android:layout_marginEnd="55dp"
-            android:layout_marginRight="55dp"
+            android:layout_marginTop="32dp"
+            android:layout_marginEnd="56dp"
+            android:layout_marginRight="56dp"
             android:fontFamily="@font/regular"
+            android:onClick="onClick"
             android:text="Next"
             android:textColor="@color/primary_red"
             android:textSize="15sp"
@@ -72,10 +62,11 @@
             android:id="@+id/previousQuestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="55dp"
-            android:layout_marginLeft="55dp"
-            android:layout_marginTop="90dp"
+            android:layout_marginStart="52dp"
+            android:layout_marginLeft="52dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="@font/regular"
+            android:onClick="onClick"
             android:text="Previous"
             android:textColor="@color/primary_red"
             android:textSize="15sp"
@@ -95,34 +86,40 @@
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/questionSolvedFromTotal">
+            app:layout_constraintTop_toBottomOf="@+id/questionNumber">
 
-            <TextView
-                android:id="@+id/questionNumber"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/light"
-                android:text="Q1."
-                android:textColor="@color/primary_black"
-                android:textSize="15sp" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/quizQuestion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="45dp"
-                android:layout_marginLeft="45dp"
-                android:layout_marginTop="30dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginBottom="30dp"
-                android:fontFamily="@font/light"
-                android:text="Three charges +Q, q, +Q are placed  respectively, at distance 0, d/2 and d  from the origin, on the x-axis. If the net  force experienced by +Q placed at x = 0  is zero, then value of q is"
-                android:textColor="@color/primary_black"
-                android:textSize="15sp" />
+                <TextView
+                    android:id="@+id/textViewX"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginTop="15dp"
+                    android:fontFamily="@font/light"
+                    android:text="Question:"
+                    android:textColor="@color/primary_black"
+                    android:textSize="15sp" />
+
+                <TextView
+                    android:id="@+id/quizQuestion"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="25dp"
+                    android:layout_marginLeft="25dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_marginEnd="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="15dp"
+                    android:fontFamily="@font/light"
+                    android:text="Three charges +Q, q, +Q are placed  respectively, at distance 0, d/2 and d  from the origin, on the x-axis. If the net  force experienced by +Q placed at x = 0  is zero, then value of q is"
+                    android:textColor="@color/primary_black"
+                    android:textSize="15sp" />
+            </LinearLayout>
 
         </androidx.cardview.widget.CardView>
 
@@ -131,21 +128,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="75dp"
+            android:onClick="onClick"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="@+id/questionView"
             app:layout_constraintStart_toStartOf="@+id/questionView"
             app:layout_constraintTop_toBottomOf="@+id/questionView">
-
-            <ImageView
-                android:id="@+id/imageView6"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/optionOne"
@@ -182,21 +170,12 @@
             android:layout_marginStart="35dp"
             android:layout_marginLeft="35dp"
             android:layout_marginTop="10dp"
+            android:onClick="onClick"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="@+id/firstOptionView"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/firstOptionView">
-
-            <ImageView
-                android:id="@+id/imageView7"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/optionTwo"
@@ -231,21 +210,12 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:onClick="onClick"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="@+id/secondOptionView"
             app:layout_constraintStart_toStartOf="@+id/secondOptionView"
             app:layout_constraintTop_toBottomOf="@+id/secondOptionView">
-
-            <ImageView
-                android:id="@+id/imageView8"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/optionThree"
@@ -280,24 +250,15 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:onClick="onClick"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="10dp"
             app:layout_constraintEnd_toEndOf="@+id/thirdOptionView"
             app:layout_constraintStart_toStartOf="@+id/thirdOptionView"
             app:layout_constraintTop_toBottomOf="@+id/thirdOptionView">
 
-            <ImageView
-                android:id="@+id/imageView9"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                tools:srcCompat="@tools:sample/avatars" />
-
             <TextView
-                android:id="@+id/OptionFour"
+                android:id="@+id/optionFour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="27dp"

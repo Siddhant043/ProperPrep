@@ -14,4 +14,6 @@
     <color name="hint_grey">#808080</color>
     <color name="mainBackground_grey">#DDE3E5</color>
     <color name="buttonColor_blue">#444FF6</color>
+    <color name="incorrect_red">#E32626</color>
+    <color name="correct_green">#26E3B0</color>
 </resources>

@@ -42,7 +42,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         Glide.with(context)
                 .load(model.getCategoryImage())
                 .into(holder.categoryItemImage);
-
+        holder.categoryItemPracticeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(v.getContext(), ItemTopicsActivity.class);
+                intent.putExtra("categoryId", model.getCategoryId()); // passing the value of categoryItemHeading to the next activity
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -60,16 +67,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
             categoryItemImage = itemView.findViewById(R.id.categoryItemImage);
             categoryItemHeading = itemView.findViewById(R.id.categoryItemHeading);
             categoryItemPracticeButton = itemView.findViewById(R.id.categoryItemPracticeButton);
-            
-            categoryItemPracticeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    String heading = categoryItemHeading.getText().toString();
-                    Intent intent = new Intent(v.getContext(), ItemTopicsActivity.class);
-                    intent.putExtra("heading", heading); // passing the value of categoryItemHeading to the next activity
-                    context.startActivity(intent);
-                }
-            });
         }
     }
 }
