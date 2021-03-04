@@ -1,5 +1,6 @@
 package com.example.properprepapp;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 
@@ -7,12 +8,18 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.properprepapp.databinding.ActivityItemTopicsBinding;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
 public class ItemTopicsActivity extends AppCompatActivity {
 
     ActivityItemTopicsBinding binding;
+    FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,48 +28,82 @@ public class ItemTopicsActivity extends AppCompatActivity {
         binding = ActivityItemTopicsBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        db = FirebaseFirestore.getInstance();
+
         //getting the extra items passed from previous activity
         Bundle bn = getIntent().getExtras();
         String categoryId = bn.getString("categoryId");
 
 
-
         //creating arrayList for particular categories based on their headings
+        ArrayList<ItemTopicsModel> itemTopics = new ArrayList<>();
+        ItemTopicsAdapter adapter = new ItemTopicsAdapter(this, itemTopics);
 
-        if(categoryId.equals("1")){
-            binding.itemTopicHeading.setText("Physics");
-            ArrayList<ItemTopicsModel> itemTopics = new ArrayList<>();
-            itemTopics.add(new ItemTopicsModel("1. Any physics topic", "Questions solved: 0/25"));
+        switch (categoryId) {
+            case "1":
+                binding.itemTopicHeading.setText("Physics");
+                db.collection("categories/1/topics").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        itemTopics.clear();
+                        for(DocumentSnapshot snapshot: value.getDocuments()){
+                            ItemTopicsModel model = snapshot.toObject(ItemTopicsModel.class);
 
-            ItemTopicsAdapter adapter = new ItemTopicsAdapter(this, itemTopics);
-            binding.itemTopicsList.setLayoutManager(new GridLayoutManager(this, 1));
-            binding.itemTopicsList.setAdapter(adapter);
-        }else if(categoryId.equals("2")){
-            binding.itemTopicHeading.setText("Chemistry");
-            ArrayList<ItemTopicsModel> itemTopics = new ArrayList<>();
-            itemTopics.add(new ItemTopicsModel("1. Any chemistry topic", "Questions solved: 0/25"));
+                            itemTopics.add(model);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                break;
+            case "2":
+                binding.itemTopicHeading.setText("Chemistry");
+                db.collection("categories/2/topics").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        itemTopics.clear();
+                        for(DocumentSnapshot snapshot: value.getDocuments()){
+                            ItemTopicsModel model = snapshot.toObject(ItemTopicsModel.class);
 
-            ItemTopicsAdapter adapter = new ItemTopicsAdapter(this, itemTopics);
-            binding.itemTopicsList.setLayoutManager(new GridLayoutManager(this, 1));
-            binding.itemTopicsList.setAdapter(adapter);
-        }else if(categoryId.equals("3")){
-            binding.itemTopicHeading.setText("Mathematics");
-            ArrayList<ItemTopicsModel> itemTopics = new ArrayList<>();
-            itemTopics.add(new ItemTopicsModel("1. Any mathematics topic", "Questions solved: 0/25"));
+                            itemTopics.add(model);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                break;
+            case "3":
+                binding.itemTopicHeading.setText("Mathematics");
+                db.collection("categories/3/topics").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        itemTopics.clear();
+                        for(DocumentSnapshot snapshot: value.getDocuments()){
+                            ItemTopicsModel model = snapshot.toObject(ItemTopicsModel.class);
 
-            ItemTopicsAdapter adapter = new ItemTopicsAdapter(this, itemTopics);
-            binding.itemTopicsList.setLayoutManager(new GridLayoutManager(this, 1));
-            binding.itemTopicsList.setAdapter(adapter);
-        }else if(categoryId.equals("4")){
-            binding.itemTopicHeading.setText("Biology");
-            ArrayList<ItemTopicsModel> itemTopics = new ArrayList<>();
-            itemTopics.add(new ItemTopicsModel("1. Any biology topic", "Questions solved: 0/25"));
+                            itemTopics.add(model);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                break;
+            case "4":
+                binding.itemTopicHeading.setText("Biology");
+                db.collection("categories/4/topics").addSnapshotListener(new EventListener<QuerySnapshot>() {
+                    @Override
+                    public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                        itemTopics.clear();
+                        for(DocumentSnapshot snapshot: value.getDocuments()){
+                            ItemTopicsModel model = snapshot.toObject(ItemTopicsModel.class);
 
-            ItemTopicsAdapter adapter = new ItemTopicsAdapter(this, itemTopics);
-            binding.itemTopicsList.setLayoutManager(new GridLayoutManager(this, 1));
-            binding.itemTopicsList.setAdapter(adapter);
-        }else {
-            Log.i("ArrayList Error", "Suitable heading not found.");
+                            itemTopics.add(model);
+                        }
+                        adapter.notifyDataSetChanged();
+                    }
+                });
+                break;
         }
+
+        binding.itemTopicsList.setLayoutManager(new GridLayoutManager(this, 1));
+        binding.itemTopicsList.setAdapter(adapter);
+
     }
 }

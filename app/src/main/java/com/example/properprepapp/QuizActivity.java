@@ -34,6 +34,7 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+    // function to show the correct answer after selection
     void showAnswer(){
         if(question.getCorrectAnswer().equals(binding.optionOne.getText().toString())){
             binding.firstOptionView.setBackground(getResources().getDrawable(R.drawable.green_background));
@@ -47,10 +48,10 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-
+    // function to show a question based on index number
     void setNextQuestion() {
         if (index < questions.size()) {
-            binding.questionNumber.setText(String.format("%d/%d", (index+1), questions.size()));
+            binding.questionNumber.setText(String.format("%d/%d", (index+1), questions.size())); // setting up the questionNumber
             question = questions.get(index);
             binding.quizQuestion.setText(question.getQuestionText());
             binding.optionOne.setText(question.getOptionOne());
@@ -60,6 +61,7 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    // function to check the user's answer
     void checkAnswer(TextView textView, View view) {
         String selectedAnswer = textView.getText().toString();
         if (selectedAnswer.equals(question.getCorrectAnswer())) {
@@ -70,6 +72,7 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    //function to reset the background of the options
     void reset(){
         binding.firstOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
         binding.secondOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
@@ -77,8 +80,10 @@ public class QuizActivity extends AppCompatActivity {
         binding.fourthOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
     }
 
+    //function runs when any clickable item is clicked.
     public void onClick(View view) {
         switch (view.getId()) {
+            //on option selection the particular view and the text inside it is passed to check function.
             case R.id.firstOptionView:
                 TextView selected1 = binding.optionOne;
                 checkAnswer(selected1, view);
@@ -96,7 +101,7 @@ public class QuizActivity extends AppCompatActivity {
                 checkAnswer(selected4, view);
                 break;
 
-
+            //this case runs when next button is tapped
             case R.id.nextQuestion:
                 if (index < questions.size()) {
                     index++;
@@ -106,11 +111,11 @@ public class QuizActivity extends AppCompatActivity {
                     Toast.makeText(this, "No more questions.", Toast.LENGTH_SHORT).show();
                 }
                 break;
+            //this case runs when previous button is tapped
             case R.id.previousQuestion:
                 if (index > 0) {
                     index--;
                     setNextQuestion();
-
                 } else {
                     Toast.makeText(this, "No previous question available.", Toast.LENGTH_SHORT).show();
                 }
