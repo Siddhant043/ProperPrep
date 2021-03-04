@@ -12,28 +12,11 @@
         android:layout_height="match_parent"
         android:background="@color/primary_white">
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="139dp"
-            android:layout_height="50dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="10dp"
-            android:text="Submit"
-            android:textAllCaps="false"
-            android:textColor="@color/primary_white"
-            app:backgroundTint="@color/buttonColor_blue"
-            app:cornerRadius="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/fourthOptionView" />
-
         <TextView
             android:id="@+id/questionNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="35dp"
+            android:layout_marginTop="30dp"
             android:fontFamily="@font/light"
             android:text="1/30"
             android:textColor="@color/primary_black"
@@ -250,9 +233,11 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
+            android:layout_marginBottom="30dp"
             android:onClick="onClick"
             app:cardBackgroundColor="@color/white"
             app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/thirdOptionView"
             app:layout_constraintStart_toStartOf="@+id/thirdOptionView"
             app:layout_constraintTop_toBottomOf="@+id/thirdOptionView">
