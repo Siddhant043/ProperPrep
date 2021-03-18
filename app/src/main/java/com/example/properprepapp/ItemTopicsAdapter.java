@@ -36,7 +36,9 @@ public class ItemTopicsAdapter extends RecyclerView.Adapter<ItemTopicsAdapter.It
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                
                 Intent intent = new Intent(context, QuizActivity.class);
+                intent.putExtra("topicId", model.getTopicId());
                 context.startActivity(intent);
             }
         });

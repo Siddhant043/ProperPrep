@@ -8,6 +8,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.properprepapp.databinding.ActivityQuizBinding;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
@@ -15,6 +19,7 @@ public class QuizActivity extends AppCompatActivity {
 
     ActivityQuizBinding binding;
     ArrayList<Questions> questions;
+    FirebaseFirestore db;
     Questions question;
     private int index = 0;
 
@@ -26,8 +31,7 @@ public class QuizActivity extends AppCompatActivity {
 
         questions = new ArrayList<>();
 
-        questions.add(new Questions("", "Three charges +Q, q, +Q are placed  respectively, at distance 0, d/2 and d  from the origin, on the x-axis. If the net  force experienced by +Q placed at x = 0  is zero, then value of q is", "+Q/4", "–Q/2", "+Q/2", "-Q/4", "-Q/4"));
-        questions.add(new Questions("", "What is earth?", "Planet", "Human", "Country", "Animal", "Planet"));
+        questions.add(new Questions("", "An electron of mass me, initially at rest, moves through a certain distance in a uniform electric field in time tr A proton of mass mp) also initially at rest, takes time t2 to move through an equal distance in this uniform electric field. Neglecting the effect of gravity, the ratio of t, /1, is nearly equal to:", "1", "(mp/me)^1/2", "(me/mp)^1/2", "1832", "(mp/me)^1/2"));
 
         setNextQuestion();
 
@@ -70,14 +74,23 @@ public class QuizActivity extends AppCompatActivity {
             showAnswer();
             view.setBackground(getResources().getDrawable(R.drawable.red_background));
         }
+
     }
+
+
 
     //function to reset the background of the options
     void reset(){
-        binding.firstOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
-        binding.secondOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
-        binding.thirdOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
-        binding.fourthOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
+
+                binding.firstOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
+                binding.secondOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
+                binding.thirdOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
+                binding.fourthOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
+                binding.firstOptionView.setClickable(true);
+                binding.secondOptionView.setClickable(true);
+                binding.thirdOptionView.setClickable(true);
+                binding.fourthOptionView.setClickable(true);
+
     }
 
     //function runs when any clickable item is clicked.

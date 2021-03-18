@@ -35,6 +35,7 @@ public class ItemTopicsActivity extends AppCompatActivity {
         String categoryId = bn.getString("categoryId");
 
 
+
         //creating arrayList for particular categories based on their headings
         ArrayList<ItemTopicsModel> itemTopics = new ArrayList<>();
         ItemTopicsAdapter adapter = new ItemTopicsAdapter(this, itemTopics);
@@ -48,7 +49,7 @@ public class ItemTopicsActivity extends AppCompatActivity {
                         itemTopics.clear();
                         for(DocumentSnapshot snapshot: value.getDocuments()){
                             ItemTopicsModel model = snapshot.toObject(ItemTopicsModel.class);
-
+                            model.setTopicId(snapshot.getId());
                             itemTopics.add(model);
                         }
                         adapter.notifyDataSetChanged();
@@ -63,7 +64,7 @@ public class ItemTopicsActivity extends AppCompatActivity {
                         itemTopics.clear();
                         for(DocumentSnapshot snapshot: value.getDocuments()){
                             ItemTopicsModel model = snapshot.toObject(ItemTopicsModel.class);
-
+                            model.setTopicId(snapshot.getId());
                             itemTopics.add(model);
                         }
                         adapter.notifyDataSetChanged();
@@ -78,7 +79,7 @@ public class ItemTopicsActivity extends AppCompatActivity {
                         itemTopics.clear();
                         for(DocumentSnapshot snapshot: value.getDocuments()){
                             ItemTopicsModel model = snapshot.toObject(ItemTopicsModel.class);
-
+                            model.setTopicId(snapshot.getId());
                             itemTopics.add(model);
                         }
                         adapter.notifyDataSetChanged();
@@ -93,7 +94,7 @@ public class ItemTopicsActivity extends AppCompatActivity {
                         itemTopics.clear();
                         for(DocumentSnapshot snapshot: value.getDocuments()){
                             ItemTopicsModel model = snapshot.toObject(ItemTopicsModel.class);
-
+                            model.setTopicId(snapshot.getId());
                             itemTopics.add(model);
                         }
                         adapter.notifyDataSetChanged();

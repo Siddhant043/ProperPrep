@@ -1,11 +1,12 @@
 package com.example.properprepapp;
 
 public class ItemTopicsModel {
-    private String itemTopicView, questionSolvedView;
+    private String itemTopicView, questionSolvedView, topicId;
 
-    public ItemTopicsModel(String itemTopicView, String questionSolvedView) {
+    public ItemTopicsModel(String itemTopicView, String questionSolvedView, String topicId) {
         this.itemTopicView = itemTopicView;
         this.questionSolvedView = questionSolvedView;
+        this.topicId = topicId;
     }
 
     public ItemTopicsModel(){}
@@ -24,5 +25,13 @@ public class ItemTopicsModel {
 
     public void setQuestionSolvedView(String questionSolvedView) {
         this.questionSolvedView = questionSolvedView;
+    }
+
+    public String getTopicId() {
+        return topicId;
+    }
+
+    public void setTopicId(String topicId) {
+        this.topicId = topicId;
     }
 }
