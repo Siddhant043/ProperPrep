@@ -24,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     ActivityRegisterBinding binding;
     ProgressDialog progressDialog;
+    public User user;
     private FirebaseAuth mAuth; //declared firebase auth instance
     private FirebaseFirestore db; //declared firestore instance
 
@@ -53,7 +54,7 @@ public class RegisterActivity extends AppCompatActivity {
                 passwordText = binding.passwordTextSignup.getText().toString();
                 nameText = binding.nameViewSignup.getText().toString();
 
-                User user = new User(nameText, emailText, passwordText);
+                user = new User(nameText, emailText, passwordText);
                 progressDialog.show();
                 mAuth.createUserWithEmailAndPassword(emailText, passwordText).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override

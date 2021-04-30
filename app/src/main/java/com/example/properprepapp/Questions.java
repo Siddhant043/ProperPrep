@@ -2,6 +2,7 @@ package com.example.properprepapp;
 
 public class Questions {
     private String questionId, questionText, optionOne, optionTwo, optionThree, optionFour, correctAnswer;
+    private String belongsToTopic = "";
 
 
     public Questions(String questionId, String questionText, String optionOne, String optionTwo, String optionThree, String optionFour, String correctAnswer) {
@@ -68,5 +69,13 @@ public class Questions {
 
     public void setCorrectAnswer(String correctAnswer) {
         this.correctAnswer = correctAnswer;
+    }
+
+    public String getBelongsToTopic() {
+        return belongsToTopic;
+    }
+
+    public void setBelongsToTopic(String belongsToTopic) {
+        this.belongsToTopic = belongsToTopic;
     }
 }

@@ -1,16 +1,23 @@
 package com.example.properprepapp;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.properprepapp.databinding.ActivityQuizBinding;
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
@@ -21,6 +28,7 @@ public class QuizActivity extends AppCompatActivity {
     ArrayList<Questions> questions;
     FirebaseFirestore db;
     Questions question;
+    int correctAnswer = 0;
     private int index = 0;
 
     @Override
@@ -28,12 +36,27 @@ public class QuizActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityQuizBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
+        db = FirebaseFirestore.getInstance();
+        String categoryId = getIntent().getStringExtra("categoryId");
         questions = new ArrayList<>();
+        Log.i("Category value", categoryId);
 
-        questions.add(new Questions("", "An electron of mass me, initially at rest, moves through a certain distance in a uniform electric field in time tr A proton of mass mp) also initially at rest, takes time t2 to move through an equal distance in this uniform electric field. Neglecting the effect of gravity, the ratio of t, /1, is nearly equal to:", "1", "(mp/me)^1/2", "(me/mp)^1/2", "1832", "(mp/me)^1/2"));
+
+
+        db.collection("categories").document(categoryId).collection("questions").get().addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+            @Override
+            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                for (DocumentSnapshot snapshot : queryDocumentSnapshots) {
+                    Questions newQuestion = snapshot.toObject(Questions.class);
+                    questions.add(newQuestion);
+                }
+            }
+        });
 
         setNextQuestion();
+
+
+
 
 
     }
@@ -69,12 +92,12 @@ public class QuizActivity extends AppCompatActivity {
     void checkAnswer(TextView textView, View view) {
         String selectedAnswer = textView.getText().toString();
         if (selectedAnswer.equals(question.getCorrectAnswer())) {
+            correctAnswer++;
             view.setBackground(getResources().getDrawable(R.drawable.green_background));
         } else {
             showAnswer();
             view.setBackground(getResources().getDrawable(R.drawable.red_background));
         }
-
     }
 
 
@@ -86,10 +109,6 @@ public class QuizActivity extends AppCompatActivity {
                 binding.secondOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
                 binding.thirdOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
                 binding.fourthOptionView.setBackground(getResources().getDrawable(R.drawable.white_background));
-                binding.firstOptionView.setClickable(true);
-                binding.secondOptionView.setClickable(true);
-                binding.thirdOptionView.setClickable(true);
-                binding.fourthOptionView.setClickable(true);
 
     }
 

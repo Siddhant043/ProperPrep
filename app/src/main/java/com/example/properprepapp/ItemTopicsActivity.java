@@ -31,8 +31,8 @@ public class ItemTopicsActivity extends AppCompatActivity {
         db = FirebaseFirestore.getInstance();
 
         //getting the extra items passed from previous activity
-        Bundle bn = getIntent().getExtras();
-        String categoryId = bn.getString("categoryId");
+
+        String categoryId = getIntent().getStringExtra("categoryId");
 
 
 
@@ -50,6 +50,7 @@ public class ItemTopicsActivity extends AppCompatActivity {
                         for(DocumentSnapshot snapshot: value.getDocuments()){
                             ItemTopicsModel model = snapshot.toObject(ItemTopicsModel.class);
                             model.setTopicId(snapshot.getId());
+                            model.setBelongsCategory(categoryId);
                             itemTopics.add(model);
                         }
                         adapter.notifyDataSetChanged();
@@ -65,6 +66,7 @@ public class ItemTopicsActivity extends AppCompatActivity {
                         for(DocumentSnapshot snapshot: value.getDocuments()){
                             ItemTopicsModel model = snapshot.toObject(ItemTopicsModel.class);
                             model.setTopicId(snapshot.getId());
+                            model.setBelongsCategory(categoryId);
                             itemTopics.add(model);
                         }
                         adapter.notifyDataSetChanged();
@@ -80,6 +82,7 @@ public class ItemTopicsActivity extends AppCompatActivity {
                         for(DocumentSnapshot snapshot: value.getDocuments()){
                             ItemTopicsModel model = snapshot.toObject(ItemTopicsModel.class);
                             model.setTopicId(snapshot.getId());
+                            model.setBelongsCategory(categoryId);
                             itemTopics.add(model);
                         }
                         adapter.notifyDataSetChanged();
@@ -95,6 +98,7 @@ public class ItemTopicsActivity extends AppCompatActivity {
                         for(DocumentSnapshot snapshot: value.getDocuments()){
                             ItemTopicsModel model = snapshot.toObject(ItemTopicsModel.class);
                             model.setTopicId(snapshot.getId());
+                            model.setBelongsCategory(categoryId);
                             itemTopics.add(model);
                         }
                         adapter.notifyDataSetChanged();

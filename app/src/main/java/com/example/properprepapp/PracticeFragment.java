@@ -1,5 +1,6 @@
 package com.example.properprepapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -59,7 +60,13 @@ public class PracticeFragment extends Fragment {
                         adapter.notifyDataSetChanged(); //helps in updating UI
                     }
                 });
-
+        binding.analyseProgressText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), AnalyseProgressActivity.class);
+                startActivity(intent);
+            }
+        });
         binding.pacticeCategoryList.setLayoutManager(new GridLayoutManager(getContext(), 1));
         binding.pacticeCategoryList.setAdapter(adapter);
 

@@ -39,6 +39,7 @@ public class ItemTopicsAdapter extends RecyclerView.Adapter<ItemTopicsAdapter.It
                 
                 Intent intent = new Intent(context, QuizActivity.class);
                 intent.putExtra("topicId", model.getTopicId());
+                intent.putExtra("categoryId", model.getBelongsCategory());
                 context.startActivity(intent);
             }
         });

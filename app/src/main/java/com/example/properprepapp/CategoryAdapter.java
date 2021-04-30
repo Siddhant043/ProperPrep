@@ -38,14 +38,14 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         CategoryModel model = categoryModels.get(position);
         holder.categoryItemHeading.setText(model.getCategoryName());
 
-        //using glide to handle image intput
+        //using glide to handle image input
         Glide.with(context)
                 .load(model.getCategoryImage())
                 .into(holder.categoryItemImage);
         holder.categoryItemPracticeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(v.getContext(), ItemTopicsActivity.class);
+                Intent intent = new Intent(v.getContext(), QuizActivity.class);
                 intent.putExtra("categoryId", model.getCategoryId()); // passing the value of categoryItemHeading to the next activity
                 context.startActivity(intent);
             }
